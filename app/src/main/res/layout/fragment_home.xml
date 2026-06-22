@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_deep">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- TOP NAV BAR -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@color/green_dark"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🎓 Bright Start"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:backgroundTint="@color/lime"
+                android:text="Login"
+                android:textColor="@color/green_deep"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/green_mid"
+                android:text="Register"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- HERO SLIDER -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/heroPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/hero_gradient" />
+
+            <ImageButton
+                android:id="@+id/btnPrev"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/circle_button_bg"
+                android:src="@android:drawable/ic_media_previous"
+                android:tint="@color/white" />
+
+            <ImageButton
+                android:id="@+id/btnNext"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/circle_button_bg"
+                android:src="@android:drawable/ic_media_next"
+                android:tint="@color/white" />
+
+            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                android:id="@+id/dotsIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="12dp"
+                app:dotsColor="@color/lime"
+                app:selectedDotColor="@color/lime" />
+        </FrameLayout>
+
+        <!-- HERO BUTTONS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green_dark"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/btnLearnMore"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/green_mid"
+                android:text="Learn More"
+                android:textColor="@color/white" />
+
+            <View android:layout_width="12dp" android:layout_height="1dp" />
+
+            <Button
+                android:id="@+id/btnDonateNow"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/lime"
+                android:text="Donate Now"
+                android:textColor="@color/green_deep" />
+        </LinearLayout>
+
+        <!-- STATS ROW -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green_mid"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                <TextView android:id="@+id/tvStudentCount" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="--"
+                    android:textColor="@color/lime" android:textSize="26sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Students" android:textColor="@color/white" android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                <TextView android:id="@+id/tvVolunteerCount" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="--"
+                    android:textColor="@color/lime" android:textSize="26sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Volunteers" android:textColor="@color/white" android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                <TextView android:id="@+id/tvProgramCount" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="--"
+                    android:textColor="@color/lime" android:textSize="26sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Programs" android:textColor="@color/white" android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ABOUT SECTION -->
+        <LinearLayout
+            android:id="@+id/aboutSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green_deep"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="About Bright Start" android:textColor="@color/lime"
+                android:textSize="20sp" android:textStyle="bold" />
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" android:lineSpacingMultiplier="1.6"
+                android:text="The Bright Start Education Initiative is a South African non-profit organisation dedicated to improving educational outcomes for learners in disadvantaged communities. We connect passionate volunteers with schools and community centres across Gauteng, KwaZulu-Natal, and the Western Cape."
+                android:textColor="@color/text_muted" android:textSize="13sp" />
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" android:lineSpacingMultiplier="1.6"
+                android:text="Our programs span Maths Literacy, English Reading and Writing, Natural Sciences, Life Skills and Wellness, and Digital Literacy."
+                android:textColor="@color/text_muted" android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- PROGRAMS SECTION -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green_dark"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Our Programs" android:textColor="@color/lime"
+                android:textSize="20sp" android:textStyle="bold" android:layout_marginBottom="12dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/card_bg" android:orientation="vertical"
+                android:padding="14dp" android:layout_marginBottom="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="📐 Maths Literacy" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Foundational numeracy for Grades 4–7 learners"
+                    android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/card_bg" android:orientation="vertical"
+                android:padding="14dp" android:layout_marginBottom="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="📚 English Reading and Writing" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Literacy and comprehension skills development"
+                    android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/card_bg" android:orientation="vertical"
+                android:padding="14dp" android:layout_marginBottom="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🔬 Natural Sciences Outreach" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Hands-on science experiments in communities"
+                    android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/card_bg" android:orientation="vertical"
+                android:padding="14dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="💻 Digital Literacy" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="Basic computer and internet skills for learners"
+                    android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- FOOTER -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="56dp"
+            android:background="@color/green_deep" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="© 2024 Bright Start Education Initiative"
+                android:textColor="@color/text_muted" android:textSize="11sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

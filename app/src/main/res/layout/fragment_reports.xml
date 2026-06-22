@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="@color/green_deep">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp" android:paddingBottom="80dp">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="📈 Reports" android:textColor="@color/lime"
+                android:textSize="18sp" android:textStyle="bold" android:layout_marginBottom="16dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/card_bg" android:orientation="vertical" android:padding="14dp" android:layout_marginBottom="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="👨‍🎓 Students" android:textColor="@color/lime" android:textSize="14sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvTotalStudents" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/white" android:textSize="20sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvGenderBreakdown" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvStudentsByArea" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/text_muted" android:textSize="11sp" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/card_bg" android:orientation="vertical" android:padding="14dp" android:layout_marginBottom="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🙋 Volunteers" android:textColor="@color/lime" android:textSize="14sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvTotalVolunteers" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/white" android:textSize="20sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvActiveVolunteers" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvVolunteerSpecialities" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/text_muted" android:textSize="11sp" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/card_bg" android:orientation="vertical" android:padding="14dp" android:layout_marginBottom="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="📋 Programs" android:textColor="@color/lime" android:textSize="14sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvTotalPrograms" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/white" android:textSize="20sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvActivePrograms" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/card_bg" android:orientation="vertical" android:padding="14dp" android:layout_marginBottom="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="✅ Attendance Rate" android:textColor="@color/lime" android:textSize="14sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvAttendanceRate" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/white" android:textSize="15sp" android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/card_bg" android:orientation="vertical" android:padding="14dp" android:layout_marginBottom="10dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="📊 Performance" android:textColor="@color/lime" android:textSize="14sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvAvgScore" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/white" android:textSize="20sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvGradeBreakdown" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@drawable/card_bg" android:orientation="vertical" android:padding="14dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="💰 Donations" android:textColor="@color/lime" android:textSize="14sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvTotalDonations" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/white" android:textSize="20sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvTotalAmount" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="R0.00" android:textColor="@color/lime" android:textSize="15sp" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvDonationsByType" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="--" android:textColor="@color/text_muted" android:textSize="11sp" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

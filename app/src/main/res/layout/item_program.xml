@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp" android:background="@drawable/card_bg"
+    android:orientation="horizontal" android:padding="14dp" android:gravity="center_vertical">
+    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+        <TextView android:id="@+id/tvName" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" android:text="Program"/>
+        <TextView android:id="@+id/tvDescription" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="3dp" android:text="Description"/>
+        <TextView android:id="@+id/tvDates" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textColor="@color/text_muted" android:textSize="11sp" android:layout_marginTop="3dp" android:text="Dates"/>
+        <TextView android:id="@+id/tvStatus" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textColor="@color/lime" android:textSize="11sp" android:layout_marginTop="3dp" android:text="Active"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:orientation="vertical" android:gravity="center">
+        <ImageButton android:id="@+id/btnEdit" android:layout_width="36dp" android:layout_height="36dp"
+            android:background="@drawable/circle_button_bg" android:src="@android:drawable/ic_menu_edit" android:tint="@color/lime"/>
+        <ImageButton android:id="@+id/btnDelete" android:layout_width="36dp" android:layout_height="36dp"
+            android:layout_marginTop="6dp" android:background="@drawable/circle_button_bg"
+            android:src="@android:drawable/ic_menu_delete" android:tint="#FF5252"/>
+    </LinearLayout>
+</LinearLayout>

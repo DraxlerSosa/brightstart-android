@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="16dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Student *" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+        <Spinner android:id="@+id/spinnerStudent" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="8dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Program *" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+        <Spinner android:id="@+id/spinnerProgram" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="8dp"/>
+        <EditText android:id="@+id/etDate" android:layout_width="match_parent" android:layout_height="48dp"
+            android:hint="Enrolment Date (tap to pick) *" android:focusable="false" android:layout_marginBottom="8dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Status *" android:textSize="12sp" android:layout_marginBottom="4dp"/>
+        <Spinner android:id="@+id/spinnerStatus" android:layout_width="match_parent" android:layout_height="48dp"/>
+    </LinearLayout>
+</ScrollView>
