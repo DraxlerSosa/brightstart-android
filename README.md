@@ -28,6 +28,50 @@ Native Android client for **BrightStart**, an education-initiative management pl
 - **Min SDK:** 26 · **Target/Compile SDK:** 34
 
 ## Project Structure
+app/src/main/java/com/brightstart/app/
+
+├── data/
+
+│   ├── api/          # Retrofit service + client setup
+
+│   ├── models/        # Data models
+
+│   └── repository/    # Repository layer
+
+├── ui/
+
+│   ├── auth/           # Login / Register
+
+│   ├── home/           # Home + hero slider
+
+│   ├── dashboard/       # Dashboard
+
+│   ├── students/        # Student list + adapter
+
+│   ├── enrolments/
+
+│   ├── attendance/
+
+│   ├── programs/
+
+│   ├── sessions/
+
+│   ├── volunteers/
+
+│   ├── donations/
+
+│   ├── performance/
+
+│   ├── reports/
+
+│   └── adminuser/
+
+├── utils/               # SessionManager, extensions
+
+├── MainActivity.kt
+
+└── BrightStartApp.kt
+
 
 ## Setup
 
