@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_deep"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Help &amp; Support" android:textColor="@color/white"
+            android:textSize="24sp" android:textStyle="bold" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="4dp" android:text="Tap a question to see the answer."
+            android:textColor="@color/text_muted" android:textSize="13sp" />
+
+        <LinearLayout
+            android:id="@+id/faqContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" android:layout_marginBottom="16dp"
+            android:background="@drawable/card_bg" android:padding="16dp"
+            android:text="Still stuck? Ask your BrightStart administrator, or contact the project team through the GitHub repository for this app."
+            android:textColor="@color/text_muted" android:textSize="13sp" />
+    </LinearLayout>
+</ScrollView>

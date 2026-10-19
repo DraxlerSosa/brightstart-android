@@ -18,9 +18,9 @@ class StudentsAdapter(
     override fun onBindViewHolder(h: VH, pos: Int) {
         val s = getItem(pos)
         h.b.tvName.text    = "${s.firstName} ${s.lastName}"
-        h.b.tvArea.text    = "📍 ${s.communityArea}"
+        h.b.tvArea.text    = "${s.communityArea}"
         h.b.tvGender.text  = s.gender
-        h.b.tvContact.text = "📞 ${s.contactNumber}"
+        h.b.tvContact.text = "${s.contactNumber}"
         h.b.tvDob.text     = "DOB: ${s.dateOfBirth}"
         h.b.tvEnrolmentDate.text = "Enrolled: ${s.enrolmentDate}"
         h.b.tvInitials.text = "${s.firstName.firstOrNull() ?: ""}${s.lastName.firstOrNull() ?: ""}"

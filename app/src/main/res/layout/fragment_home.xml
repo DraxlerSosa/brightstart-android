@@ -202,7 +202,7 @@
                 android:background="@drawable/card_bg" android:orientation="vertical"
                 android:padding="14dp" android:layout_marginBottom="10dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="📐 Maths Literacy" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
+                    android:text="Maths Literacy" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:text="Foundational numeracy for Grades 4–7 learners"
                     android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
@@ -212,7 +212,7 @@
                 android:background="@drawable/card_bg" android:orientation="vertical"
                 android:padding="14dp" android:layout_marginBottom="10dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="📚 English Reading and Writing" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
+                    android:text="English Reading and Writing" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:text="Literacy and comprehension skills development"
                     android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
@@ -222,7 +222,7 @@
                 android:background="@drawable/card_bg" android:orientation="vertical"
                 android:padding="14dp" android:layout_marginBottom="10dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="🔬 Natural Sciences Outreach" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
+                    android:text="Natural Sciences Outreach" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:text="Hands-on science experiments in communities"
                     android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
@@ -232,7 +232,7 @@
                 android:background="@drawable/card_bg" android:orientation="vertical"
                 android:padding="14dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="💻 Digital Literacy" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
+                    android:text="Digital Literacy" android:textColor="@color/lime" android:textSize="15sp" android:textStyle="bold" />
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                     android:text="Basic computer and internet skills for learners"
                     android:textColor="@color/text_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>

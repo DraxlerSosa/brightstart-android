@@ -1,0 +1,32 @@
+# Optional Azure DevOps pipeline: builds the app and runs the unit tests.
+# Azure DevOps may require a free parallelism grant before Microsoft-hosted agents run;
+# see docs/AZURE_DEVOPS.md.
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: JavaToolInstaller@0
+    inputs:
+      versionSpec: '17'
+      jdkArchitectureOption: x64
+      jdkSourceOption: PreInstalled
+
+  - script: chmod +x gradlew
+    displayName: Make Gradle wrapper executable
+
+  - script: ./gradlew testDebugUnitTest assembleDebug --stacktrace
+    displayName: Unit tests and debug build
+
+  - task: PublishTestResults@2
+    condition: succeededOrFailed()
+    inputs:
+      testResultsFormat: JUnit
+      testResultsFiles: '**/build/test-results/testDebugUnitTest/*.xml'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: app/build/outputs/apk/debug
+      artifactName: debug-apk

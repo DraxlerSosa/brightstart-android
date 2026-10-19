@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import com.brightstart.app.utils.Validators
+import com.brightstart.app.utils.showValidated
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DiffUtil
@@ -60,12 +62,22 @@ class DonationsFragment : Fragment() {
                 c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
         }
         AlertDialog.Builder(requireContext()).setTitle(if (don == null) "Add Donation" else "Edit Donation").setView(db.root)
-            .setPositiveButton(if (don == null) "Add" else "Update") { _, _ ->
+            .showValidated(
+                if (don == null) "Add" else "Update",
+                validate = {
+                    Validators.firstError(
+                        Validators.required(db.etDonorName.text.toString(), "Donor name"),
+                        Validators.emailOrPhone(db.etDonorContact.text.toString()),
+                        Validators.amount(db.etAmount.text.toString()),
+                        Validators.date(db.etDate.text.toString(), "Donation date")
+                    )
+                }
+            ) {
                 val req = DonationRequest(db.etDonorName.text.toString().trim(), db.etDonorContact.text.toString().trim(),
-                    db.etAmount.text.toString().toDoubleOrNull() ?: 0.0, db.etDate.text.toString().trim(),
+                    db.etAmount.text.toString().trim().toDouble(), db.etDate.text.toString().trim(),
                     db.spinnerType.selectedItem.toString(), db.etNotes.text.toString().trim())
                 if (don == null) vm.addDonation(req) else vm.updateDonation(don.donationId, req)
-            }.setNegativeButton("Cancel", null).show()
+            }
     }
 
     private fun confirmDelete(d: Donation) {

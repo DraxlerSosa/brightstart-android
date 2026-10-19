@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import com.brightstart.app.utils.Validators
+import com.brightstart.app.utils.showValidated
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DiffUtil
@@ -62,13 +64,20 @@ class EnrolmentsFragment : Fragment() {
                 c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
         }
         AlertDialog.Builder(requireContext()).setTitle("Add Enrolment").setView(db.root)
-            .setPositiveButton("Enrol") { _, _ ->
-                if (studentsList.isEmpty() || programsList.isEmpty()) { toast("Load data first"); return@setPositiveButton }
+            .showValidated(
+                "Enrol",
+                validate = {
+                    Validators.firstError(
+                        if (studentsList.isEmpty() || programsList.isEmpty()) "Students and programs have not loaded yet" else null,
+                        Validators.date(db.etDate.text.toString(), "Enrolment date")
+                    )
+                }
+            ) {
                 val req = EnrolmentRequest(studentsList[db.spinnerStudent.selectedItemPosition].studentId,
                     programsList[db.spinnerProgram.selectedItemPosition].programId,
                     db.etDate.text.toString().trim(), db.spinnerStatus.selectedItem.toString())
                 vm.addEnrolment(req)
-            }.setNegativeButton("Cancel", null).show()
+            }
     }
 
     private fun confirmDelete(e: Enrolment) {

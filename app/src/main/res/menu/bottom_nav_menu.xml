@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/homeFragment"
-        android:icon="@android:drawable/ic_menu_today"
+        android:icon="@drawable/ic_nav_home"
         android:title="Home"/>
     <item android:id="@+id/dashboardFragment"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:icon="@drawable/ic_nav_dashboard"
         android:title="Dashboard"/>
     <item android:id="@+id/studentsFragment"
-        android:icon="@android:drawable/ic_menu_myplaces"
+        android:icon="@drawable/ic_nav_students"
         android:title="Students"/>
     <item android:id="@+id/donationsFragment"
-        android:icon="@android:drawable/ic_menu_send"
+        android:icon="@drawable/ic_nav_donations"
         android:title="Donations"/>
     <item android:id="@+id/reportsFragment"
-        android:icon="@android:drawable/ic_menu_info_details"
+        android:icon="@drawable/ic_nav_reports"
         android:title="Reports"/>
 </menu>

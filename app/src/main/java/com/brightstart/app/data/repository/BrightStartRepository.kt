@@ -17,6 +17,12 @@ class BrightStartRepository {
     suspend fun register(fn: String, em: String, un: String, pw: String, role: String) =
         safe { api.register(RegisterRequest(fn, em, un, pw, role)) }
 
+    suspend fun googleLogin(idToken: String)              = safe { api.googleLogin(GoogleLoginRequest(idToken)) }
+    suspend fun logout()                                  = safe { api.logout() }
+    suspend fun getProfile()                              = safe { api.getProfile() }
+    suspend fun updateProfile(fullName: String, username: String) = safe { api.updateProfile(ProfileRequest(fullName, username)) }
+    suspend fun changePassword(current: String, new: String)      = safe { api.changePassword(ChangePasswordRequest(current, new)) }
+
     suspend fun getDashboardStats() = safe { api.getDashboardStats() }
 
     suspend fun getStudents(search: String = "")            = safe { api.getStudents(search) }

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_deep"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Settings" android:textColor="@color/white"
+            android:textSize="24sp" android:textStyle="bold" />
+
+        <!-- Account summary -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:background="@drawable/card_bg"
+            android:gravity="center_vertical" android:orientation="horizontal" android:padding="16dp">
+
+            <TextView android:id="@+id/tvAvatar"
+                android:layout_width="52dp" android:layout_height="52dp"
+                android:background="@drawable/circle_lime" android:gravity="center"
+                android:text="?" android:textColor="@color/green_deep"
+                android:textSize="22sp" android:textStyle="bold" />
+
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_marginStart="14dp" android:layout_weight="1" android:orientation="vertical">
+                <TextView android:id="@+id/tvName" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textColor="@color/white" android:textSize="16sp" android:textStyle="bold" />
+                <TextView android:id="@+id/tvEmail" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textColor="@color/text_muted" android:textSize="12sp" />
+                <TextView android:id="@+id/tvRole" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp" android:textColor="@color/lime"
+                    android:textSize="12sp" android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Profile -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="Profile"
+            android:textColor="@color/lime" android:textSize="14sp" android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:hint="Full name">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFullName" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:inputType="textPersonName" android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:hint="Username">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUsername" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:inputType="text" android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView android:id="@+id/tvProfileMsg" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:textSize="12sp" android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveProfile" android:layout_width="match_parent" android:layout_height="52dp"
+            android:layout_marginTop="10dp" android:backgroundTint="@color/lime"
+            android:text="Save profile" android:textColor="@color/green_deep"
+            android:textStyle="bold" app:cornerRadius="12dp" />
+
+        <!-- Password -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="28dp" android:text="Change password"
+            android:textColor="@color/lime" android:textSize="14sp" android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:hint="Current password"
+            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCurrentPassword" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:inputType="textPassword" android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:hint="New password"
+            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNewPassword" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:inputType="textPassword" android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:hint="Confirm new password"
+            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etConfirmPassword" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:inputType="textPassword" android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView android:id="@+id/tvPasswordMsg" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:textSize="12sp" android:visibility="gone" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnChangePassword" android:layout_width="match_parent" android:layout_height="52dp"
+            android:layout_marginTop="10dp" android:backgroundTint="@color/lime"
+            android:text="Change password" android:textColor="@color/green_deep"
+            android:textStyle="bold" app:cornerRadius="12dp" />
+
+        <!-- About -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="28dp" android:text="About"
+            android:textColor="@color/lime" android:textSize="14sp" android:textStyle="bold" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:background="@drawable/card_bg"
+            android:orientation="vertical" android:padding="14dp">
+            <TextView android:id="@+id/tvVersion" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/white" android:textSize="13sp" />
+            <TextView android:id="@+id/tvServer" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="4dp" android:textColor="@color/text_muted" android:textSize="12sp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:layout_marginTop="24dp" android:layout_marginBottom="16dp"
+            android:text="Log out" android:textColor="#FF5252"
+            app:cornerRadius="12dp" app:strokeColor="#FF5252" />
+
+        <ProgressBar android:id="@+id/progressBar" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_gravity="center" android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

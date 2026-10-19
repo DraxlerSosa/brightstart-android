@@ -12,6 +12,21 @@ interface BrightStartApiService {
     @POST("register.php")
     suspend fun register(@Body request: RegisterRequest): Response<ApiResponse<Unit>>
 
+    @POST("google_login.php")
+    suspend fun googleLogin(@Body request: GoogleLoginRequest): Response<LoginResponse>
+
+    @POST("logout.php")
+    suspend fun logout(): Response<ApiResponse<Unit>>
+
+    @GET("get_profile.php")
+    suspend fun getProfile(): Response<ProfileResponse>
+
+    @POST("update_profile.php")
+    suspend fun updateProfile(@Body request: ProfileRequest): Response<ProfileResponse>
+
+    @POST("change_password.php")
+    suspend fun changePassword(@Body request: ChangePasswordRequest): Response<ApiResponse<Unit>>
+
     @GET("dashboard_stats.php")
     suspend fun getDashboardStats(): Response<StatsResponse>
 

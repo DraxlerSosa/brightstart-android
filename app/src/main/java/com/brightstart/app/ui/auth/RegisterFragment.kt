@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.brightstart.app.R
 import com.brightstart.app.databinding.FragmentRegisterBinding
 import com.brightstart.app.ui.SharedViewModel
+import com.brightstart.app.utils.Validators
 import com.brightstart.app.utils.gone
 import com.brightstart.app.utils.visible
 
@@ -65,17 +66,17 @@ class RegisterFragment : Fragment() {
         val password = binding.etPassword.text.toString()
         val confirm  = binding.etConfirmPassword.text.toString()
         val role     = binding.spinnerRole.selectedItem.toString()
-        when {
-            fullName.isEmpty() || email.isEmpty() || username.isEmpty() || password.isEmpty() -> {
-                binding.tvError.text = "All fields are required"; binding.tvError.visible()
-            }
-            password.length < 6 -> {
-                binding.tvError.text = "Password must be at least 6 characters"; binding.tvError.visible()
-            }
-            password != confirm -> {
-                binding.tvError.text = "Passwords do not match"; binding.tvError.visible()
-            }
-            else -> viewModel.register(fullName, email, username, password, role)
+        val error = Validators.firstError(
+            Validators.fullName(fullName),
+            Validators.email(email),
+            Validators.username(username),
+            Validators.password(password),
+            Validators.passwordsMatch(password, confirm)
+        )
+        if (error != null) {
+            binding.tvError.text = error; binding.tvError.visible()
+        } else {
+            viewModel.register(fullName, email, username, password, role)
         }
     }
 

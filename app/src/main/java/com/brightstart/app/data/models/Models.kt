@@ -48,6 +48,27 @@ data class AdminUser(
 data class LoginResponse(
     @SerializedName("success") val success: Boolean,
     @SerializedName("message") val message: String? = null,
+    @SerializedName("token")   val token: String? = null,
+    @SerializedName("user")    val user: AdminUser? = null
+)
+
+data class GoogleLoginRequest(
+    @SerializedName("id_token") val idToken: String
+)
+
+data class ProfileRequest(
+    @SerializedName("full_name") val fullName: String,
+    @SerializedName("username")  val username: String
+)
+
+data class ChangePasswordRequest(
+    @SerializedName("current_password") val currentPassword: String,
+    @SerializedName("new_password")     val newPassword: String
+)
+
+data class ProfileResponse(
+    @SerializedName("success") val success: Boolean,
+    @SerializedName("message") val message: String? = null,
     @SerializedName("user")    val user: AdminUser? = null
 )
 

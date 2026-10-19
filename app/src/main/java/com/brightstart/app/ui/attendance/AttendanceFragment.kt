@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import com.brightstart.app.utils.Validators
+import com.brightstart.app.utils.showValidated
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DiffUtil
@@ -51,16 +53,23 @@ class AttendanceFragment : Fragment() {
         sea.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); db.spinnerSession.adapter = sea
         val sa = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, studentsList.map { "${it.firstName} ${it.lastName}" })
         sa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); db.spinnerStudent.adapter = sa
-        val sta = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, arrayOf("Present", "Absent", "Late"))
+        val sta = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, arrayOf("Present", "Absent", "Excused", "Late"))
         sta.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); db.spinnerStatus.adapter = sta
         AlertDialog.Builder(requireContext()).setTitle("Record Attendance").setView(db.root)
-            .setPositiveButton("Save") { _, _ ->
-                if (sessionsList.isEmpty() || studentsList.isEmpty()) { toast("No sessions or students loaded"); return@setPositiveButton }
+            .showValidated(
+                "Save",
+                validate = {
+                    Validators.firstError(
+                        if (sessionsList.isEmpty() || studentsList.isEmpty()) "Sessions and students have not loaded yet" else null,
+                        if (db.etNotes.text.toString().length > 255) "Notes must be 255 characters or fewer" else null
+                    )
+                }
+            ) {
                 val req = AttendanceRequest(sessionsList[db.spinnerSession.selectedItemPosition].sessionId,
                     studentsList[db.spinnerStudent.selectedItemPosition].studentId,
                     db.spinnerStatus.selectedItem.toString(), db.etNotes.text.toString().trim())
                 vm.addAttendance(req)
-            }.setNegativeButton("Cancel", null).show()
+            }
     }
 
     private fun confirmDelete(a: Attendance) {

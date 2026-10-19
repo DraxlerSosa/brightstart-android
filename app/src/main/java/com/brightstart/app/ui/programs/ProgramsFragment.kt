@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import com.brightstart.app.utils.Validators
+import com.brightstart.app.utils.showValidated
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DiffUtil
@@ -42,7 +44,7 @@ class ProgramsFragment : Fragment() {
 
     private fun showDialog(prog: Program?) {
         val db = DialogAddProgramBinding.inflate(layoutInflater)
-        val statuses = arrayOf("Active", "Inactive", "Completed")
+        val statuses = arrayOf("Active", "Pending", "Closed")
         val sa = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, statuses)
         sa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); db.spinnerStatus.adapter = sa
         prog?.let {
@@ -59,11 +61,20 @@ class ProgramsFragment : Fragment() {
             }
         }
         AlertDialog.Builder(requireContext()).setTitle(if (prog == null) "Add Program" else "Edit Program").setView(db.root)
-            .setPositiveButton(if (prog == null) "Add" else "Update") { _, _ ->
+            .showValidated(
+                if (prog == null) "Add" else "Update",
+                validate = {
+                    Validators.firstError(
+                        Validators.required(db.etName.text.toString(), "Program name"),
+                        Validators.required(db.etDescription.text.toString(), "Description", 500),
+                        Validators.dateOrder(db.etStartDate.text.toString(), db.etEndDate.text.toString())
+                    )
+                }
+            ) {
                 val req = ProgramRequest(db.etName.text.toString().trim(), db.etDescription.text.toString().trim(),
                     db.etStartDate.text.toString().trim(), db.etEndDate.text.toString().trim(), db.spinnerStatus.selectedItem.toString())
                 if (prog == null) vm.addProgram(req) else vm.updateProgram(prog.programId, req)
-            }.setNegativeButton("Cancel", null).show()
+            }
     }
 
     private fun confirmDelete(p: Program) {

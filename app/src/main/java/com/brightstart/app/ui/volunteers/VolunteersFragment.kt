@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import com.brightstart.app.utils.Validators
+import com.brightstart.app.utils.showValidated
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -66,12 +68,23 @@ class VolunteersFragment : Fragment() {
         }
         AlertDialog.Builder(requireContext())
             .setTitle(if (vol == null) "Add Volunteer" else "Edit Volunteer").setView(db.root)
-            .setPositiveButton(if (vol == null) "Add" else "Update") { _, _ ->
+            .showValidated(
+                if (vol == null) "Add" else "Update",
+                validate = {
+                    Validators.firstError(
+                        Validators.fullName(db.etFullName.text.toString()),
+                        Validators.email(db.etEmail.text.toString()),
+                        Validators.phone(db.etPhone.text.toString()),
+                        Validators.required(db.etSpeciality.text.toString(), "Subject speciality"),
+                        Validators.date(db.etJoinDate.text.toString(), "Join date")
+                    )
+                }
+            ) {
                 val req = VolunteerRequest(db.etFullName.text.toString().trim(), db.etEmail.text.toString().trim(),
                     db.etPhone.text.toString().trim(), db.etSpeciality.text.toString().trim(),
                     db.etJoinDate.text.toString().trim(), db.spinnerStatus.selectedItem.toString())
                 if (vol == null) vm.addVolunteer(req) else vm.updateVolunteer(vol.volunteerId, req)
-            }.setNegativeButton("Cancel", null).show()
+            }
     }
 
     private fun confirmDelete(v: Volunteer) {

@@ -56,7 +56,7 @@ class AdminUsersAdapter(val onApprove: (AdminUser) -> Unit, val onReject: (Admin
         val u = getItem(pos)
         h.b.tvName.text = u.fullName; h.b.tvEmail.text = u.email
         h.b.tvUsername.text = "@${u.username}"; h.b.tvRole.text = u.role
-        h.b.tvVerified.text = if (u.verified == 1) "✅ Verified" else "⏳ Pending"
+        h.b.tvVerified.text = if (u.verified == 1) " Verified" else " Pending"
         h.b.tvVerified.setTextColor(if (u.verified == 1) 0xFF4CAF50.toInt() else 0xFFFF9800.toInt())
         h.b.tvCreated.text = "Joined: ${u.createdAt}"
         h.b.btnApprove.visibility = if (u.verified == 0) View.VISIBLE else View.GONE

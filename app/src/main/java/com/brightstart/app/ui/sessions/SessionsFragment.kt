@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import com.brightstart.app.utils.Validators
+import com.brightstart.app.utils.showValidated
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DiffUtil
@@ -74,14 +76,23 @@ class SessionsFragment : Fragment() {
             }
         }
         AlertDialog.Builder(requireContext()).setTitle(if (session == null) "Add Session" else "Edit Session").setView(db.root)
-            .setPositiveButton(if (session == null) "Add" else "Update") { _, _ ->
-                if (programsList.isEmpty() || volunteersList.isEmpty()) { toast("Load programs and volunteers first"); return@setPositiveButton }
+            .showValidated(
+                if (session == null) "Add" else "Update",
+                validate = {
+                    Validators.firstError(
+                        if (programsList.isEmpty() || volunteersList.isEmpty()) "Programs and volunteers have not loaded yet" else null,
+                        Validators.date(db.etDate.text.toString(), "Session date"),
+                        Validators.timeOrder(db.etStartTime.text.toString(), db.etEndTime.text.toString()),
+                        Validators.required(db.etVenue.text.toString(), "Venue")
+                    )
+                }
+            ) {
                 val req = SessionRequest(programsList[db.spinnerProgram.selectedItemPosition].programId,
                     volunteersList[db.spinnerVolunteer.selectedItemPosition].volunteerId,
                     db.etDate.text.toString().trim(), db.etStartTime.text.toString().trim(),
                     db.etEndTime.text.toString().trim(), db.etVenue.text.toString().trim())
                 if (session == null) vm.addSession(req) else vm.updateSession(session.sessionId, req)
-            }.setNegativeButton("Cancel", null).show()
+            }
     }
 
     private fun confirmDelete(s: Session) {

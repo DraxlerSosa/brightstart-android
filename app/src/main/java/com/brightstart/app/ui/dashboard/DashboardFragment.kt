@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.brightstart.app.R
+import com.brightstart.app.data.repository.BrightStartRepository
 import com.brightstart.app.databinding.FragmentDashboardBinding
 import com.brightstart.app.ui.SharedViewModel
 import com.brightstart.app.utils.SessionManager
@@ -40,12 +41,19 @@ class DashboardFragment : Fragment() {
             if (!sessionManager.isLoggedIn.first()) {
                 findNavController().navigate(R.id.loginFragment); return@launch
             }
-            binding.tvWelcome.text = "Welcome back, ${sessionManager.userName.first()} 👋"
+            binding.tvWelcome.text = "Welcome back, ${sessionManager.userName.first()} "
+            // The server enforces roles; hide the admin tools from everyone else
+            binding.cardAdminUsers.visibility =
+                if (sessionManager.userRole.first() == "Admin") View.VISIBLE else View.GONE
         }
 
         binding.swipeRefresh.setOnRefreshListener { viewModel.loadDashboard() }
         binding.btnLogout.setOnClickListener {
-            lifecycleScope.launch { sessionManager.clearSession(); findNavController().navigate(R.id.homeFragment) }
+            lifecycleScope.launch {
+                BrightStartRepository().logout()   // invalidates the token on the server
+                sessionManager.clearSession()
+                findNavController().navigate(R.id.homeFragment)
+            }
         }
 
         binding.cardStudents.setOnClickListener    { findNavController().navigate(R.id.studentsFragment) }
@@ -58,6 +66,8 @@ class DashboardFragment : Fragment() {
         binding.cardPerformance.setOnClickListener { findNavController().navigate(R.id.performanceFragment) }
         binding.cardReports.setOnClickListener     { findNavController().navigate(R.id.reportsFragment) }
         binding.cardAdminUsers.setOnClickListener  { findNavController().navigate(R.id.adminUsersFragment) }
+        binding.cardSettings.setOnClickListener    { findNavController().navigate(R.id.settingsFragment) }
+        binding.cardHelp.setOnClickListener        { findNavController().navigate(R.id.helpFragment) }
 
         viewModel.loading.observe(viewLifecycleOwner) { binding.swipeRefresh.isRefreshing = it }
         viewModel.stats.observe(viewLifecycleOwner) { stats ->

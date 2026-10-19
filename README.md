@@ -1,10 +1,13 @@
 # BrightStart (Android App)
 
-Native Android client for **BrightStart**, an education-initiative management platform. The app gives administrators and volunteers a mobile interface to manage students, attendance, programs, sessions, donations, volunteers, and performance records, backed by the [BrightStart PHP API](https://github.com/<your-username>/brightstart-web).
+Native Android client for **BrightStart**, an education-initiative management platform. The app gives administrators and volunteers a mobile interface to manage students, attendance, programs, sessions, donations, volunteers, and performance records, backed by the [BrightStart PHP API](https://github.com/DraxlerSosa/brightstart-web).
 
 ## Features
 
-- **Authentication** — login and registration, with account approval handled server-side
+- **Authentication** — registration, login with token-based sessions and Google single sign-on, account approval handled server-side
+- **Settings** — edit profile, change password, view app/server info, log out
+- **Help & Support** — in-app FAQ
+- **Input validation** — every form checks its input and explains problems instead of crashing
 - **Dashboard** — at-a-glance overview of key program metrics
 - **Students** — view and manage student records
 - **Enrolments** — track which students are enrolled in which programs
@@ -20,7 +23,9 @@ Native Android client for **BrightStart**, an education-initiative management pl
 
 - **Language:** Kotlin
 - **UI:** Android Views with ViewBinding, Navigation Component, Fragments
-- **Networking:** Retrofit2 + OkHttp (with logging interceptor)
+- **Networking:** Retrofit2 + OkHttp (auth and error interceptors)
+- **Sign-in:** Google Sign-In via Credential Manager
+- **Testing:** JUnit4 + MockWebServer, GitHub Actions CI
 - **Async:** Kotlin Coroutines
 - **Images:** Glide
 - **Charts:** MPAndroidChart
@@ -79,26 +84,27 @@ app/src/main/java/com/brightstart/app/
 
 - Android Studio (latest stable)
 - JDK 17
-- A running instance of the [BrightStart backend API](https://github.com/<your-username>/brightstart-web)
+- The deployed [BrightStart backend API](https://github.com/DraxlerSosa/brightstart-web) (see its `DEPLOY_AZURE.md`)
 
 ### Configuration
 
-The app's base URL is defined in `app/build.gradle.kts`:
+Two values are read from `gradle.properties` (or `-P` flags) and fall back to defaults in `app/build.gradle.kts`:
 
-```kotlin
-buildConfigField("String", "BASE_URL", "\"http://your-api-host/brightstart/api/\"")
+```properties
+BASE_URL=https://<your-app>.azurewebsites.net/api/
+GOOGLE_WEB_CLIENT_ID=<web-oauth-client-id>.apps.googleusercontent.com
 ```
 
-Update this to point at wherever your backend is hosted (a local PHP server, an ngrok tunnel, or a deployed host), then rebuild.
+See `docs/GOOGLE_SIGNIN_SETUP.md` for the Google steps. Demo accounts (password `BrightStart@2026`) come from the backend's `database/seed.sql`.
 
 ### Build & Run
 
 ```bash
-git clone https://github.com/<your-username>/brightstart-android.git
+git clone https://github.com/DraxlerSosa/brightstart-android.git
 cd brightstart-android
 ```
 
-Open the project in Android Studio, let Gradle sync, then run on an emulator or device (`minSdk` 26+).
+Open the project in Android Studio, let Gradle sync, then run on a phone (USB debugging on) or an emulator (`minSdk` 26+).
 
 Alternatively, from the command line:
 
@@ -106,10 +112,25 @@ Alternatively, from the command line:
 ./gradlew assembleDebug
 ```
 
+### Tests
+
+```bash
+./gradlew testDebugUnitTest
+```
+
+Unit tests cover the input validators, the auth/error network interceptors (MockWebServer) and API model parsing. GitHub Actions (`.github/workflows/android.yml`) runs the tests and builds the APK on every push.
+
+## Documentation
+
+- `docs/USER_GUIDE.md` - how to use the app
+- `docs/GOOGLE_SIGNIN_SETUP.md` - enabling Google single sign-on
+- `docs/AZURE_DEVOPS.md` - Azure DevOps set-up and evidence
+- `docs/DEMO_VIDEO_CHECKLIST.md` - what to show in the demo video
+
 ## Notes
 
 - This repo intentionally excludes build output (`app/build/`), Gradle caches (`.gradle/`), and `local.properties` — these are environment-specific and regenerate automatically when the project is opened/built.
-- The app expects the backend API to be reachable at the configured `BASE_URL`; without it running, network-dependent screens won't load data.
+- The app expects the backend API to be reachable at the configured `BASE_URL`; without it, network-dependent screens won't load data. Only HTTPS is allowed (cleartext traffic is disabled).
 
 ## License
 

@@ -23,7 +23,7 @@
                 <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
                     android:layout_weight="1" android:orientation="vertical">
                     <TextView android:id="@+id/tvWelcome" android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:text="Welcome back 👋"
+                        android:layout_height="wrap_content" android:text="Welcome back"
                         android:textColor="@color/white" android:textSize="17sp" android:textStyle="bold" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                         android:text="Bright Start Dashboard" android:textColor="@color/text_muted" android:textSize="11sp" />
@@ -102,7 +102,7 @@
                 android:layout_marginTop="10dp" android:background="@drawable/card_lime_bg"
                 android:gravity="center" android:orientation="horizontal">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="💰 Total Donations: " android:textColor="@color/green_deep" android:textSize="13sp" />
+                    android:text="Total Donations: " android:textColor="@color/green_deep" android:textSize="13sp" />
                 <TextView android:id="@+id/tvTotalDonations" android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:text="R0.00"
                     android:textColor="@color/green_deep" android:textSize="15sp" android:textStyle="bold" />
@@ -131,19 +131,19 @@
                 <LinearLayout android:id="@+id/cardStudents" android:layout_width="0dp" android:layout_height="76dp"
                     android:layout_weight="1" android:layout_marginEnd="6dp"
                     android:background="@drawable/card_bg" android:gravity="center" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👨‍🎓" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="22sp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Students" android:textColor="@color/white" android:textSize="10sp" />
                 </LinearLayout>
                 <LinearLayout android:id="@+id/cardVolunteers" android:layout_width="0dp" android:layout_height="76dp"
                     android:layout_weight="1" android:layout_marginStart="6dp" android:layout_marginEnd="6dp"
                     android:background="@drawable/card_bg" android:gravity="center" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🙋" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="22sp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Volunteers" android:textColor="@color/white" android:textSize="10sp" />
                 </LinearLayout>
                 <LinearLayout android:id="@+id/cardPrograms" android:layout_width="0dp" android:layout_height="76dp"
                     android:layout_weight="1" android:layout_marginStart="6dp"
                     android:background="@drawable/card_bg" android:gravity="center" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📋" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="22sp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Programs" android:textColor="@color/white" android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -153,19 +153,19 @@
                 <LinearLayout android:id="@+id/cardSessions" android:layout_width="0dp" android:layout_height="76dp"
                     android:layout_weight="1" android:layout_marginEnd="6dp"
                     android:background="@drawable/card_bg" android:gravity="center" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📅" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="22sp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sessions" android:textColor="@color/white" android:textSize="10sp" />
                 </LinearLayout>
                 <LinearLayout android:id="@+id/cardEnrolments" android:layout_width="0dp" android:layout_height="76dp"
                     android:layout_weight="1" android:layout_marginStart="6dp" android:layout_marginEnd="6dp"
                     android:background="@drawable/card_bg" android:gravity="center" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📝" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="22sp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Enrolments" android:textColor="@color/white" android:textSize="10sp" />
                 </LinearLayout>
                 <LinearLayout android:id="@+id/cardDonations" android:layout_width="0dp" android:layout_height="76dp"
                     android:layout_weight="1" android:layout_marginStart="6dp"
                     android:background="@drawable/card_bg" android:gravity="center" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="💰" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="22sp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Donations" android:textColor="@color/white" android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -175,19 +175,19 @@
                 <LinearLayout android:id="@+id/cardAttendance" android:layout_width="0dp" android:layout_height="76dp"
                     android:layout_weight="1" android:layout_marginEnd="6dp"
                     android:background="@drawable/card_bg" android:gravity="center" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="✅" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="22sp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Attendance" android:textColor="@color/white" android:textSize="10sp" />
                 </LinearLayout>
                 <LinearLayout android:id="@+id/cardPerformance" android:layout_width="0dp" android:layout_height="76dp"
                     android:layout_weight="1" android:layout_marginStart="6dp" android:layout_marginEnd="6dp"
                     android:background="@drawable/card_bg" android:gravity="center" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📊" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="22sp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Performance" android:textColor="@color/white" android:textSize="10sp" />
                 </LinearLayout>
                 <LinearLayout android:id="@+id/cardReports" android:layout_width="0dp" android:layout_height="76dp"
                     android:layout_weight="1" android:layout_marginStart="6dp"
                     android:background="@drawable/card_bg" android:gravity="center" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="📈" android:textSize="22sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="22sp" />
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reports" android:textColor="@color/white" android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -196,9 +196,27 @@
                 android:layout_width="match_parent" android:layout_height="60dp"
                 android:layout_marginTop="10dp" android:background="@drawable/card_bg"
                 android:gravity="center" android:orientation="horizontal">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👤  " android:textSize="20sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="20sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:text="Manage Admin Users" android:textColor="@color/white" android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/cardSettings"
+                android:layout_width="match_parent" android:layout_height="60dp"
+                android:layout_marginTop="10dp" android:background="@drawable/card_bg"
+                android:gravity="center" android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚙" android:textSize="20sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Settings" android:textColor="@color/white" android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/cardHelp"
+                android:layout_width="match_parent" android:layout_height="60dp"
+                android:layout_marginTop="10dp" android:background="@drawable/card_bg"
+                android:gravity="center" android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="20sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Help &amp; Support" android:textColor="@color/white" android:textSize="13sp" />
             </LinearLayout>
 
             <!-- RECENT STUDENTS -->

@@ -48,12 +48,12 @@ class HomeFragment : Fragment() {
 
     private fun setupSlider() {
         val slides = listOf(
-            HeroSlide(R.drawable.slide_placeholder_1, "Empowering Every Learner",
+            HeroSlide(R.drawable.hero_slide_1, "Empowering Every Learner",
                 "Supporting disadvantaged communities across South Africa."),
-            HeroSlide(R.drawable.slide_placeholder_2, "Dedicated Volunteers",
+            HeroSlide(R.drawable.hero_slide_2, "Dedicated Volunteers",
                 "Passionate volunteers teaching maths, science and life skills."),
-            HeroSlide(R.drawable.slide_placeholder_3, "Real Impact, Real Lives",
-                "Tracking progress and transforming futures one student at a time.")
+            HeroSlide(R.drawable.hero_slide_3, "Learning for the Future",
+                "Coding and technology clubs that prepare students for tomorrow.")
         )
         val adapter = HeroSliderAdapter(slides)
         binding.heroPager.adapter = adapter

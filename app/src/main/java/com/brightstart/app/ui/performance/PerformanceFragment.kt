@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import com.brightstart.app.utils.Validators
+import com.brightstart.app.utils.showValidated
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DiffUtil
@@ -61,14 +63,22 @@ class PerformanceFragment : Fragment() {
                 c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
         }
         AlertDialog.Builder(requireContext()).setTitle("Add Performance").setView(db.root)
-            .setPositiveButton("Save") { _, _ ->
-                if (studentsList.isEmpty() || programsList.isEmpty()) { toast("Load data first"); return@setPositiveButton }
+            .showValidated(
+                "Save",
+                validate = {
+                    Validators.firstError(
+                        if (studentsList.isEmpty() || programsList.isEmpty()) "Students and programs have not loaded yet" else null,
+                        Validators.date(db.etDate.text.toString(), "Assessment date"),
+                        Validators.score(db.etScore.text.toString())
+                    )
+                }
+            ) {
                 val req = PerformanceRequest(studentsList[db.spinnerStudent.selectedItemPosition].studentId,
                     programsList[db.spinnerProgram.selectedItemPosition].programId,
-                    db.etDate.text.toString().trim(), db.etScore.text.toString().toDoubleOrNull() ?: 0.0,
+                    db.etDate.text.toString().trim(), db.etScore.text.toString().trim().toDouble(),
                     db.spinnerGrade.selectedItem.toString(), db.etComments.text.toString().trim())
                 vm.addPerformance(req)
-            }.setNegativeButton("Cancel", null).show()
+            }
     }
 
     private fun confirmDelete(p: Performance) {

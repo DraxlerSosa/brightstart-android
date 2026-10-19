@@ -12,7 +12,7 @@
         android:padding="24dp">
 
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_gravity="center" android:text="🎓" android:textSize="40sp" />
+            android:layout_gravity="center" android:text="" android:textSize="40sp" />
 
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:layout_gravity="center" android:layout_marginTop="8dp"
@@ -39,7 +39,7 @@
             android:padding="20dp"
             android:visibility="gone">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="✅ Registration Successful!" android:textColor="@color/lime"
+                android:text="Registration Successful!" android:textColor="@color/lime"
                 android:textSize="15sp" android:textStyle="bold" />
             <TextView android:id="@+id/tvSuccessMsg" android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:layout_marginTop="8dp"

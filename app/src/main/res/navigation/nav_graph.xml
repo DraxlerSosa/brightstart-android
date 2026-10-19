@@ -43,6 +43,12 @@
     <fragment android:id="@+id/reportsFragment"
         android:name="com.brightstart.app.ui.reports.ReportsFragment"
         android:label="Reports"/>
+    <fragment android:id="@+id/settingsFragment"
+        android:name="com.brightstart.app.ui.settings.SettingsFragment"
+        android:label="Settings"/>
+    <fragment android:id="@+id/helpFragment"
+        android:name="com.brightstart.app.ui.help.HelpFragment"
+        android:label="Help"/>
     <fragment android:id="@+id/adminUsersFragment"
         android:name="com.brightstart.app.ui.adminusers.AdminUsersFragment"
         android:label="Admin Users"/>

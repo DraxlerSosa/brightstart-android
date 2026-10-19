@@ -11,7 +11,14 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "BASE_URL", "\"http://opacity-unwatched-dullness.ngrok-free.dev/brightstart/api/\"")
+        // Hosted API (Azure App Service). Override with -PBASE_URL=... or in gradle.properties.
+        val baseUrl = (project.findProperty("BASE_URL") as String?)
+            ?: "https://brightstart-api-km-dnawebcbh9gfcucu.uaenorth-01.azurewebsites.net/api/"
+        buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+        // Web OAuth client ID used for Google Sign-In (see docs/GOOGLE_SIGNIN_SETUP.md)
+        val googleClientId = (project.findProperty("GOOGLE_WEB_CLIENT_ID") as String?)
+            ?: "YOUR_WEB_CLIENT_ID.apps.googleusercontent.com"
+        buildConfigField("String", "GOOGLE_WEB_CLIENT_ID", "\"$googleClientId\"")
     }
     buildTypes {
         release {
@@ -27,6 +34,9 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+    }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
     }
 }
 dependencies {
@@ -50,6 +60,16 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("com.tbuonomo:dotsindicator:5.0")
+    // Google Sign-In (single sign-on) via Credential Manager
+    implementation("androidx.credentials:credentials:1.2.2")
+    implementation("androidx.credentials:credentials-play-services-auth:1.2.2")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.0")
+
+    // Unit tests (run on the JVM, also in GitHub Actions)
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
+    testImplementation("com.google.code.gson:gson:2.10.1")
+
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

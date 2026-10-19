@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import com.brightstart.app.utils.Validators
+import com.brightstart.app.utils.showValidated
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -72,14 +74,25 @@ class StudentsFragment : Fragment() {
         AlertDialog.Builder(requireContext())
             .setTitle(if (student == null) "Add Student" else "Edit Student")
             .setView(db.root)
-            .setPositiveButton(if (student == null) "Add" else "Update") { _, _ ->
+            .showValidated(
+                if (student == null) "Add" else "Update",
+                validate = {
+                    Validators.firstError(
+                        Validators.required(db.etFirstName.text.toString(), "First name", 60),
+                        Validators.required(db.etLastName.text.toString(), "Last name", 60),
+                        Validators.pastDate(db.etDob.text.toString(), "Date of birth"),
+                        Validators.required(db.etCommunity.text.toString(), "Community area"),
+                        Validators.phone(db.etContact.text.toString()),
+                        Validators.date(db.etEnrolmentDate.text.toString(), "Enrolment date")
+                    )
+                }
+            ) {
                 val req = StudentRequest(db.etFirstName.text.toString().trim(), db.etLastName.text.toString().trim(),
                     db.etDob.text.toString().trim(), db.spinnerGender.selectedItem.toString(),
                     db.etCommunity.text.toString().trim(), db.etContact.text.toString().trim(),
                     db.etEnrolmentDate.text.toString().trim())
                 if (student == null) viewModel.addStudent(req) else viewModel.updateStudent(student.studentId, req)
             }
-            .setNegativeButton("Cancel", null).show()
     }
 
     private fun confirmDelete(s: Student) {
