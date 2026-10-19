@@ -43,8 +43,9 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sessionManager = SessionManager(requireContext())
 
-        lifecycleScope.launch {
-            if (sessionManager.isLoggedIn.first() && sessionManager.token() != null) {
+        // Adjusted verification checks logic route to block splash screen flash iterations
+        viewLifecycleOwner.lifecycleScope.launch {
+            if (sessionManager.isLoggedIn.first() && !sessionManager.token().isNullOrBlank()) {
                 findNavController().navigate(R.id.dashboardFragment)
             }
         }
@@ -79,34 +80,40 @@ class LoginFragment : Fragment() {
             showError("Google sign-in is not set up in this build yet.")
             return
         }
+
         setBusy(true)
         val option = GetGoogleIdOption.Builder()
             .setFilterByAuthorizedAccounts(false)
             .setServerClientId(clientId)
             .build()
-        val request = GetCredentialRequest.Builder().addCredentialOption(option).build()
 
-        lifecycleScope.launch {
+        val request = GetCredentialRequest.Builder()
+            .addCredentialOption(option)
+            .build()
+
+        viewLifecycleOwner.lifecycleScope.launch {
             try {
                 val result = CredentialManager.create(requireContext()).getCredential(requireActivity(), request)
                 val credential = result.credential
-                if (credential is CustomCredential &&
-                    credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL
-                ) {
+
+                if (credential is CustomCredential && credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL) {
                     val idToken = GoogleIdTokenCredential.createFrom(credential.data).idToken
                     repo.googleLogin(idToken).fold(
                         onSuccess = { handleLoginResponse(it) },
                         onFailure = { setBusy(false); showError("Could not reach the server. Please try again.") }
                     )
                 } else {
-                    setBusy(false); showError("Unexpected sign-in response. Please try again.")
+                    setBusy(false)
+                    showError("Unexpected sign-in response. Please try again.")
                 }
-            } catch (e: GetCredentialCancellationException) {
+            } catch (_: GetCredentialCancellationException) {
                 setBusy(false)
-            } catch (e: NoCredentialException) {
-                setBusy(false); showError("No Google account found on this phone. Add one in Settings and try again.")
-            } catch (e: GetCredentialException) {
-                setBusy(false); showError("Google sign-in failed. Please try again.")
+            } catch (_: NoCredentialException) {
+                setBusy(false)
+                showError("No Google account found on this phone. Add one in Settings and try again.")
+            } catch (_: GetCredentialException) {
+                setBusy(false)
+                showError("Google sign-in failed. Please try again.")
             }
         }
     }
@@ -116,7 +123,7 @@ class LoginFragment : Fragment() {
         val user = body?.user
         val token = body?.token
         if (_binding == null) return
-        if (body?.success == true && user != null && !token.isNullOrBlank()) {
+        if (response.isSuccessful && body != null && user != null && !token.isNullOrBlank()) {
             sessionManager.saveSession(user.adminId, user.fullName, user.username, user.email, user.role, token)
             setBusy(false)
             findNavController().navigate(R.id.dashboardFragment)
@@ -139,5 +146,8 @@ class LoginFragment : Fragment() {
         binding.tvError.visible()
     }
 
-    override fun onDestroyView() { super.onDestroyView(); _binding = null }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

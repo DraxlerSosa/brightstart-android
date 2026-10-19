@@ -2,54 +2,85 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
-    <fragment android:id="@+id/homeFragment"
-        android:name="com.brightstart.app.ui.home.HomeFragment"
-        android:label="Home"/>
-    <fragment android:id="@+id/loginFragment"
+    <fragment
+        android:id="@+id/loginFragment"
         android:name="com.brightstart.app.ui.auth.LoginFragment"
-        android:label="Login"/>
-    <fragment android:id="@+id/registerFragment"
+        android:label="Login" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.brightstart.app.ui.home.HomeFragment"
+        android:label="Home" />
+
+    <fragment
+        android:id="@+id/registerFragment"
         android:name="com.brightstart.app.ui.auth.RegisterFragment"
-        android:label="Register"/>
-    <fragment android:id="@+id/dashboardFragment"
+        android:label="Register" />
+
+    <fragment
+        android:id="@+id/dashboardFragment"
         android:name="com.brightstart.app.ui.dashboard.DashboardFragment"
-        android:label="Dashboard"/>
-    <fragment android:id="@+id/studentsFragment"
+        android:label="Dashboard" />
+
+    <fragment
+        android:id="@+id/studentsFragment"
         android:name="com.brightstart.app.ui.students.StudentsFragment"
-        android:label="Students"/>
-    <fragment android:id="@+id/volunteersFragment"
+        android:label="Students" />
+
+    <fragment
+        android:id="@+id/volunteersFragment"
         android:name="com.brightstart.app.ui.volunteers.VolunteersFragment"
-        android:label="Volunteers"/>
-    <fragment android:id="@+id/programsFragment"
+        android:label="Volunteers" />
+
+    <fragment
+        android:id="@+id/programsFragment"
         android:name="com.brightstart.app.ui.programs.ProgramsFragment"
-        android:label="Programs"/>
-    <fragment android:id="@+id/sessionsFragment"
+        android:label="Programs" />
+
+    <fragment
+        android:id="@+id/sessionsFragment"
         android:name="com.brightstart.app.ui.sessions.SessionsFragment"
-        android:label="Sessions"/>
-    <fragment android:id="@+id/enrolmentsFragment"
+        android:label="Sessions" />
+
+    <fragment
+        android:id="@+id/enrolmentsFragment"
         android:name="com.brightstart.app.ui.enrolments.EnrolmentsFragment"
-        android:label="Enrolments"/>
-    <fragment android:id="@+id/attendanceFragment"
+        android:label="Enrolments" />
+
+    <fragment
+        android:id="@+id/attendanceFragment"
         android:name="com.brightstart.app.ui.attendance.AttendanceFragment"
-        android:label="Attendance"/>
-    <fragment android:id="@+id/performanceFragment"
+        android:label="Attendance" />
+
+    <fragment
+        android:id="@+id/performanceFragment"
         android:name="com.brightstart.app.ui.performance.PerformanceFragment"
-        android:label="Performance"/>
-    <fragment android:id="@+id/donationsFragment"
+        android:label="Performance" />
+
+    <fragment
+        android:id="@+id/donationsFragment"
         android:name="com.brightstart.app.ui.donations.DonationsFragment"
-        android:label="Donations"/>
-    <fragment android:id="@+id/reportsFragment"
+        android:label="Donations" />
+
+    <fragment
+        android:id="@+id/reportsFragment"
         android:name="com.brightstart.app.ui.reports.ReportsFragment"
-        android:label="Reports"/>
-    <fragment android:id="@+id/settingsFragment"
+        android:label="Reports" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
         android:name="com.brightstart.app.ui.settings.SettingsFragment"
-        android:label="Settings"/>
-    <fragment android:id="@+id/helpFragment"
+        android:label="Settings" />
+
+    <fragment
+        android:id="@+id/helpFragment"
         android:name="com.brightstart.app.ui.help.HelpFragment"
-        android:label="Help"/>
-    <fragment android:id="@+id/adminUsersFragment"
+        android:label="Help" />
+
+    <fragment
+        android:id="@+id/adminUsersFragment"
         android:name="com.brightstart.app.ui.adminusers.AdminUsersFragment"
-        android:label="Admin Users"/>
+        android:label="Admin Users" />
 </navigation>
